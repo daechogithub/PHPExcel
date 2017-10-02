@@ -335,12 +335,12 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * @var
      */
-    private $_max_nonempty_col;
+    private $_max_nonempty_col = 'A';
 
     /**
      * @var
      */
-    private $_max_nonempty_row;
+    private $_max_nonempty_row = 0;
 
 	/**
      * Create a new worksheet
@@ -2958,7 +2958,7 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * @param $max_col
      */
     public function setMaxNonemptyCol($max_col) {
-        if ($max_col > $this->_max_nonempty_col) {
+        if (PHPExcel_Cell::columnIndexFromString($max_col) > PHPExcel_Cell::columnIndexFromString($this->_max_nonempty_col)) {
             $this->_max_nonempty_col = $max_col;
         }
     }
