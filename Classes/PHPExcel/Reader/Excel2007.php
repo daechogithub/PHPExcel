@@ -906,7 +906,13 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 												break;
 										}
 	//									echo 'Value is ', $value, PHP_EOL;
-
+										//set maximum non empty column and row
+										if (is_numeric($value) || !empty($value)) {
+											$max_col = preg_replace("/[^a-zA-Z]/", "", $r);
+											$max_row = preg_replace("/[^0-9]/", "", $r);
+											$docSheet->setMaxNonemptyCol($max_col);
+											$docSheet->setMaxNonemptyRow($max_row);
+										}
 										// Check for numeric values
 										if (is_numeric($value) && $cellDataType != 's') {
 											if ($value == (int)$value) $value = (int)$value;

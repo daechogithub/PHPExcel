@@ -332,6 +332,16 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     */
     private $_codeName = null;
 
+    /**
+     * @var
+     */
+    private $_max_nonempty_col;
+
+    /**
+     * @var
+     */
+    private $_max_nonempty_row;
+
 	/**
      * Create a new worksheet
      *
@@ -2942,4 +2952,39 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
 	public function hasCodeName(){
 		return !(is_null($this->_codeName));
 	}
+
+    /**
+     * set maximum non empty column
+     * @param $max_col
+     */
+    public function setMaxNonemptyCol($max_col) {
+        if ($max_col > $this->_max_nonempty_col) {
+            $this->_max_nonempty_col = $max_col;
+        }
+    }
+
+    /**
+     * @param $max_row
+     */
+    public function setMaxNonemptyRow($max_row) {
+        if ($max_row > $this->_max_nonempty_row) {
+            $this->_max_nonempty_row = $max_row;
+        }
+    }
+
+    /**
+     * get maximum non empty column
+     * @param $col
+     */
+    public function getMaxNonemptyCol() {
+        return $this->_max_nonempty_col;
+    }
+
+    /**
+     * @param $row
+     */
+    public function getMaxNonemptyRow() {
+        return $this->_max_nonempty_row;
+    }
+
 }
